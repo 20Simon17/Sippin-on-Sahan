@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Gjord av Simon
 public class PauseMenu : MonoBehaviour
-{
+{ //variabler
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //om man trycker på space...
         {
-            if (GameIsPaused)
+            if (GameIsPaused) //... och spelet är pausat, då startas det igen
             {
                 Resume();
             }
-            else
+            else //... och spelet körs, då pausas det
             {
                 Pause();
             }
         }
     }
-    public void Resume()
+    public void Resume() //starta spelet funktionen
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
