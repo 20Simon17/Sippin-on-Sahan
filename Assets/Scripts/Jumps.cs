@@ -65,6 +65,7 @@ public class Jumps : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.AddForce(transform.up * jumpPower);
+            FindObjectOfType<AudioManeger>().Play("PlayerJump");
         }
         #endregion
 
