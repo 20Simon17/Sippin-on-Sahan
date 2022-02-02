@@ -40,19 +40,22 @@ public class SuperJump : MonoBehaviour
 
         if (Input.GetKey(up))
         {
-            if (WingsStrenght > 0)
+            if (isUsing == false && StaminaBar.instance.currentStamina > 10)
+            {
+                StaminaBar.instance.UseStamina(10);
+                StartWings();
+            }
+           else if (StaminaBar.instance.currentStamina > 0 && isUsing)
             {
                 StartWings();
                
             }
         }
-
-
         else
         {
             StopWings();
         }
-        if (WingsStrenght <= 0 && isUsing == false)
+        if (StaminaBar.instance.currentStamina <= 0 && isUsing == true)
         {
             StopWings();
         }
@@ -66,16 +69,16 @@ public class SuperJump : MonoBehaviour
             rb.AddForce(Vector3.up * WingsForce);
         }
         
-        WingsStrenght -= Time.deltaTime;
+       // WingsStrenght -= Time.deltaTime;
         isUsing = true;
-        StaminaBar.instance.UseStamina(1);
+       StaminaBar.instance.UseStamina(25* Time.deltaTime);
     }
     void StopWings()
     {
-        if (WingsStrenght < WingsStrenghtLimit)
+     /*   if (StaminaBar.instance.currentStamina < WingsStrenghtLimit)
         {
-            WingsStrenght += Time.deltaTime;
-        }
+            StaminaBar.instance.currentStamina += Time.deltaTime;
+        }*/
         
         isUsing = false;;
     }

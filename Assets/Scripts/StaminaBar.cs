@@ -8,7 +8,7 @@ public class StaminaBar : MonoBehaviour
 {
     public Slider staminaBar;
     private int maxStamina = 100;
-    private float currentStamina;
+    public float currentStamina;
 
     public static StaminaBar instance;
     
@@ -33,28 +33,30 @@ public class StaminaBar : MonoBehaviour
     private void Update()
     {
         staminaBar.value = currentStamina;
-        /*
-        if (currentStamina > 10)
+        
+     /*   if (currentStamina > 10)
         {
-            player.WingsForce = 30f;
+          //  player.WingsForce = 30f;
             if (Input.GetKey(KeyCode.W))
             {
                 UseStamina(75f);
             }
-            player.WingsStrenght = 10f;
+            //player.WingsStrenght = 10f;
         }
         else if (currentStamina <= 40)
         {
            
-            player.WingsForce = 10f;
+          //  player.WingsForce = 10f;
         }*/
       
     }
     public void UseStamina(float amount)
     {
-      if(currentStamina - amount>=0)
+        currentStamina -= amount;
+
+        if (currentStamina - amount>=0)
       {
-            currentStamina -= amount;
+            
             staminaBar.value = currentStamina;
 
             if (regen != null)
