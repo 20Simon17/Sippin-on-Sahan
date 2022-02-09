@@ -38,7 +38,8 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-
+        //Skriven av Elliot
+        //Den här gör så att om spriten tittar vänster kommer den att flippa sig till vänster sida och göra samma på andra sidan
         float horiz = Input.GetAxis("Horizontal");
         if(horiz < 0)
         {
@@ -82,6 +83,9 @@ public class PlayerScript : MonoBehaviour
         }
         #endregion
 
+
+        //skriven av Elliot
+        //Den här gör så att om animatorn står still om inte kommer den att spela spring animatorn.
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         anim.SetBool("jump", !isGrounded);
 

@@ -4,8 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+//Skriven av Elliot
 public class StaminaBar : MonoBehaviour
 {
+
+
+    #region Variabler 
+    //Variabler som refererar till andra scripts och blir enklarare att skriva 
     public Slider staminaBar;
     private int maxStamina = 100;
     public float currentStamina;
@@ -17,39 +22,35 @@ public class StaminaBar : MonoBehaviour
 
     public SuperJump player;
 
+#endregion 
+
     public void Awake()
     {
         instance = this;
     }
     // Start is called before the first frame update
+    #region Start
+    //Den här gör så att när man börjar kommer man ha full stamina
     void Start()
     {
+
         currentStamina = maxStamina;
         staminaBar.maxValue = maxStamina;
         staminaBar.value = maxStamina;
     }
+    #endregion
 
     // Update is called once per frame
     private void Update()
     {
-        staminaBar.value = currentStamina;
         
-     /*   if (currentStamina > 10)
-        {
-          //  player.WingsForce = 30f;
-            if (Input.GetKey(KeyCode.W))
-            {
-                UseStamina(75f);
-            }
-            //player.WingsStrenght = 10f;
-        }
-        else if (currentStamina <= 40)
-        {
-           
-          //  player.WingsForce = 10f;
-        }*/
+       
+        
+   
       
     }
+    #region UseStamina
+    //Den här gör så att om man använder "stamina" så kollar den om man har tillräckligt och om man har så kommer den starta köra sin "flyg speed" om inte kommer han långsamt att få tillbaka sitt stamina
     public void UseStamina(float amount)
     {
         currentStamina -= amount;
@@ -72,7 +73,10 @@ public class StaminaBar : MonoBehaviour
            
        }
     }
+    #endregion
 
+    #region RegenStamina
+    //Den har gör så att om man inte använder stamina kommer den vänta i 2 sekunder för att sedan börja sin regen med att ge tillbaka stamina varje tick
     private IEnumerator RegenStamina()
     {
         yield return new WaitForSeconds(2);
@@ -85,4 +89,5 @@ public class StaminaBar : MonoBehaviour
         }
         regen = null;
     }
+    #endregion
 }

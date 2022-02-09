@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Skriven av Elliot
 public class CloudMoving2 : MonoBehaviour
 {
     [SerializeField, Range(1, 10)]
@@ -14,6 +16,7 @@ public class CloudMoving2 : MonoBehaviour
     }
 
     // Update is called once per frame
+    //Den här gör så att molnet rör sig åt Höger med specifik hastighet
     void Update()
     {
         transform.position += speed * direction * Time.deltaTime;

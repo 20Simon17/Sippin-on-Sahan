@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Skriven av Elliot
 public class deathplatform : MonoBehaviour
 {
     [SerializeField]
