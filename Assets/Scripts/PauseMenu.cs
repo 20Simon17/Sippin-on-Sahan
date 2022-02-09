@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) //om man trycker på space...
+        if (Input.GetKeyDown(KeyCode.Escape)) //om man trycker på escape...
         {
             if (GameIsPaused) //... och spelet är pausat, då startas det igen
             {
@@ -21,21 +21,21 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-    public void Resume() //starta spelet funktionen
+    public void Resume() //återuppta spelet funktionen
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-    void Pause()
+    void Pause() //paus funktionen
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
 
-    public void LoadMenu()
+    public void LoadMenu() //funktion för att gå tillbaka till start menyn
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;

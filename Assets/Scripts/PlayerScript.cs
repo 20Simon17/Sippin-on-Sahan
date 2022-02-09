@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     #region Variables
-    public bool startTimer;
+    public bool startTimer; 
     bool isGrounded;
     public LayerMask mask;
 
@@ -23,16 +23,16 @@ public class PlayerScript : MonoBehaviour
     private Animator anim;
     public Animator animator;
 
-
+    public static bool hasKey = false;
     #endregion
 
     void Start()
     {
         #region References
-        rb = GetComponent<Rigidbody2D>();
-        boxCollider2D = transform.GetComponent<BoxCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>(); //referens till spelarens rigidbody
+        boxCollider2D = transform.GetComponent<BoxCollider2D>(); //referens till spelarens boxcollider2D
+        sprite = GetComponent<SpriteRenderer>(); //referens till spelarens spriterenderer
+        anim = GetComponent<Animator>(); //referens till spelarens animator
         #endregion
     }
 
@@ -101,6 +101,17 @@ public class PlayerScript : MonoBehaviour
         else
         {
             anim.SetBool("isRunning", true);
+        }
+        #endregion
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Gjord av Simon
+        #region Key
+        if (collision.tag == "Key") //om man kolliderar med nyckeln (trigger) så blir "hasKey" true
+        {
+            hasKey = true;
         }
         #endregion
     }
