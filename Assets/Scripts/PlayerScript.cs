@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour
     bool isGrounded;
     public LayerMask mask;
 
+    AudioManeger maneger;
+
     Rigidbody2D rb;
     BoxCollider2D boxCollider2D;
 
@@ -33,6 +35,7 @@ public class PlayerScript : MonoBehaviour
         boxCollider2D = transform.GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        maneger = FindObjectOfType<AudioManeger>();
         #endregion
     }
 
@@ -85,6 +88,7 @@ public class PlayerScript : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump")) //om man är på marken och man trycker på "Jump" (space) så hoppar man
         {
             rb.AddForce(transform.up * jumpPower);
+            maneger.Play("Player Jump");
         }
         #endregion
 
