@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     #region Variables
-    public bool startTimer;
+    public bool startTimer; 
     bool isGrounded;
     public LayerMask mask;
 
@@ -25,17 +25,19 @@ public class PlayerScript : MonoBehaviour
     private Animator anim;
     public Animator animator;
 
-
+    public static bool hasKey = false;
     #endregion
 
     void Start()
     {
         #region References
-        rb = GetComponent<Rigidbody2D>();
-        boxCollider2D = transform.GetComponent<BoxCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+
+
         maneger = FindObjectOfType<AudioManeger>();
+        rb = GetComponent<Rigidbody2D>(); //referens till spelarens rigidbody
+        boxCollider2D = transform.GetComponent<BoxCollider2D>(); //referens till spelarens boxcollider2D
+        sprite = GetComponent<SpriteRenderer>(); //referens till spelarens spriterenderer
+        anim = GetComponent<Animator>(); //referens till spelarens animator
         #endregion
     }
 
@@ -44,7 +46,7 @@ public class PlayerScript : MonoBehaviour
         //Gjord av Elliot
 
         #region SpriteRotation
-        //Om spelaren rör sig mot ett speciellt håll kommer "spriten/gubben" att vända sin texture mot "rätt håll"
+        //Om spelaren rï¿½r sig mot ett speciellt hï¿½ll kommer "spriten/gubben" att vï¿½nda sin texture mot "rï¿½tt hï¿½ll"
         float horiz = Input.GetAxis("Horizontal");
         if(horiz < 0)
         {
@@ -61,14 +63,14 @@ public class PlayerScript : MonoBehaviour
         /*RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 5f, mask);
         Debug.DrawRay(transform.position, -transform.up, Color.black, 5f);*/
 
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size - new Vector3(0.1f,0,0), 0, -transform.up, 0.1f, mask); //skapar en boxcollider som är lite under spelaren och kan bara träffa plattformar
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size - new Vector3(0.1f,0,0), 0, -transform.up, 0.1f, mask); //skapar en boxcollider som ï¿½r lite under spelaren och kan bara trï¿½ffa plattformar
 
-        if (hit.transform != null) //om boxcollidern träffar något så startas timern och isGrounded blir true
+        if (hit.transform != null) //om boxcollidern trï¿½ffar nï¿½got sï¿½ startas timern och isGrounded blir true
         {
             startTimer = true;
             isGrounded = true;  
         }
-        else //om den inte träffar något så är startTimer false och isGrounded true
+        else //om den inte trï¿½ffar nï¿½got sï¿½ ï¿½r startTimer false och isGrounded true
         {
             startTimer = false;
             isGrounded = false;
@@ -78,14 +80,14 @@ public class PlayerScript : MonoBehaviour
 
         //Gjord av Simon
         #region Movement
-        float horizontalMove = Input.GetAxis("Horizontal"); //hämtar höger och vänster input (fungerar med kontroll också)
-        rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y); //använder höger och vänster inputen för att ändra gubbens velocity
+        float horizontalMove = Input.GetAxis("Horizontal"); //hï¿½mtar hï¿½ger och vï¿½nster input (fungerar med kontroll ocksï¿½)
+        rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y); //anvï¿½nder hï¿½ger och vï¿½nster inputen fï¿½r att ï¿½ndra gubbens velocity
         
         #endregion
         
         //Gjord av Simon
         #region Jump
-        if (isGrounded && Input.GetButtonDown("Jump")) //om man är på marken och man trycker på "Jump" (space) så hoppar man
+        if (isGrounded && Input.GetButtonDown("Jump")) //om man ï¿½r pï¿½ marken och man trycker pï¿½ "Jump" (space) sï¿½ hoppar man
         {
             rb.AddForce(transform.up * jumpPower);
             maneger.Play("Player Jump");
@@ -94,7 +96,7 @@ public class PlayerScript : MonoBehaviour
 
         //Gjord av Elliot
         #region Animations
-        //Om Spelaren rör sig, kommer "spring animationen" att köra igång tills spelaren inte rör sig.
+        //Om Spelaren rï¿½r sig, kommer "spring animationen" att kï¿½ra igï¿½ng tills spelaren inte rï¿½r sig.
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove)); 
         anim.SetBool("jump", !isGrounded);
 
@@ -105,6 +107,17 @@ public class PlayerScript : MonoBehaviour
         else
         {
             anim.SetBool("isRunning", true);
+        }
+        #endregion
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Gjord av Simon
+        #region Key
+        if (collision.tag == "Key") //om man kolliderar med nyckeln (trigger) sï¿½ blir "hasKey" true
+        {
+            hasKey = true;
         }
         #endregion
     }

@@ -5,16 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class QuitMenu : MonoBehaviour
 {
-     
-    public void YesQuit()
+     //gjord av Simon
+    public void YesQuit() //funktion för att avsluta spelet när man trycker på quit knappen i menyn
     {
         Debug.Log("Quit!");
         Application.Quit();
     }
-    
-
-
-
-
-
 }

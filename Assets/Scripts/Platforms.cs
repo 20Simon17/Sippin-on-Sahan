@@ -29,7 +29,7 @@ public class Platforms : MonoBehaviour
         
         if(waitTime <= 0) //om timern är mindre än 0 sekunder (du har stått på plattformen i 3 sekunder), då är platformeffectorn riktad neråt så du faller igenom plattformen
         {
-            effector.rotationalOffset = 180f;
+            effector.rotationalOffset = 170f;
             waitTime = 3;
         }
 

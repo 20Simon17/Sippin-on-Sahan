@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Jumps : MonoBehaviour
 {
+    //gjord av Simon (skriptet)
+
     #region Variables
     public bool startTimer;
     bool isGrounded;
@@ -19,8 +21,6 @@ public class Jumps : MonoBehaviour
     float jumpPower;
 
     #endregion
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +40,15 @@ public class Jumps : MonoBehaviour
         /*RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 5f, mask);
         Debug.DrawRay(transform.position, -transform.up, Color.black, 5f);*/
 
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size - new Vector3(0.1f, 0, 0), 0, -transform.up, 0.1f, mask);
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size - new Vector3(0.1f, 0, 0), 0, -transform.up, 0.1f, mask); 
+        //skapar en boxcast i formen av spelarens boxcollider, men lite under spelaren för att checka om spelaren är på marken eller ej. den är lite kortare på höger och vänster sida för att den inte ska bugga och detecta "ground" som vägg.
 
-        if (hit.transform != null)
+        if (hit.transform != null) //om boxcasten träffar någonting så startas timern för plattformarna och man är "isgrounded" vilket betyder att man kan hoppa igen
         {
             startTimer = true;
             isGrounded = true;
         }
-        else
+        else //om den inte träffar något så stängs timern av och man är inte grounded = inga hopp.
         {
             startTimer = false;
             isGrounded = false;
@@ -55,17 +56,11 @@ public class Jumps : MonoBehaviour
 
         #endregion
 
-        #region Movement
-        float horizontalMove = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y);
-
-        #endregion
-
         #region Jump
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && Input.GetButtonDown("Jump")) //om man är på marken och trycker på "Jump" knappen vilket defaultar till spacebar, så hoppar man
         {
             rb.AddForce(transform.up * jumpPower);
-            FindObjectOfType<AudioManeger>().Play("PlayerJump");
+            FindObjectOfType<AudioManeger>().Play("PlayerJump"); //när man hoppar så spelas hoppljudet upp -Theo
         }
         #endregion
 
