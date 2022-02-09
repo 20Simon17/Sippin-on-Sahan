@@ -39,7 +39,7 @@ public class SuperJump : MonoBehaviour
 
 
         #region WingsInput
-        // Den här gör ås att om man trycker W kommer den kolla im man har tillräckligt med stamina för att flyga, om det är sant kommer den att start UseWings, om inte kommer man inte kunna använda vingarna 
+        // Den hï¿½r gï¿½r ï¿½s att om man trycker W kommer den kolla im man har tillrï¿½ckligt med stamina fï¿½r att flyga, om det ï¿½r sant kommer den att start UseWings, om inte kommer man inte kunna anvï¿½nda vingarna 
         if (Input.GetKey(up))
         {
             if (isUsing == false && StaminaBar.instance.currentStamina > 10)
@@ -65,7 +65,7 @@ public class SuperJump : MonoBehaviour
 
     }
     #region StartWings
-    //Den här gör så att om man kunde använda vingarna kommer den att flyga upp lite med hjälp av stamina och den kommer använda stamina till den inte har tillräckligt
+    //Den hï¿½r gï¿½r sï¿½ att om man kunde anvï¿½nda vingarna kommer den att flyga upp lite med hjï¿½lp av stamina och den kommer anvï¿½nda stamina till den inte har tillrï¿½ckligt
     void StartWings()
     {
         if (rb.velocity.y < SpeedLimit)
@@ -79,7 +79,7 @@ public class SuperJump : MonoBehaviour
     }
     #endregion 
 
-    //Om man inte har tillräckligt med Stamina kommer den att bara simpelt att inte funka
+    //Om man inte har tillrï¿½ckligt med Stamina kommer den att bara simpelt att inte funka
     void StopWings()
     {
    

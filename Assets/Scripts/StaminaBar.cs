@@ -30,7 +30,7 @@ public class StaminaBar : MonoBehaviour
     }
     // Start is called before the first frame update
     #region Start
-    //Den här gör så att när man börjar kommer man ha full stamina
+    //Den hï¿½r gï¿½r sï¿½ att nï¿½r man bï¿½rjar kommer man ha full stamina
     void Start()
     {
 
@@ -50,7 +50,7 @@ public class StaminaBar : MonoBehaviour
       
     }
     #region UseStamina
-    //Den här gör så att om man använder "stamina" så kollar den om man har tillräckligt och om man har så kommer den starta köra sin "flyg speed" om inte kommer han långsamt att få tillbaka sitt stamina
+    //Den hï¿½r gï¿½r sï¿½ att om man anvï¿½nder "stamina" sï¿½ kollar den om man har tillrï¿½ckligt och om man har sï¿½ kommer den starta kï¿½ra sin "flyg speed" om inte kommer han lï¿½ngsamt att fï¿½ tillbaka sitt stamina
     public void UseStamina(float amount)
     {
         currentStamina -= amount;
@@ -76,7 +76,7 @@ public class StaminaBar : MonoBehaviour
     #endregion
 
     #region RegenStamina
-    //Den har gör så att om man inte använder stamina kommer den vänta i 2 sekunder för att sedan börja sin regen med att ge tillbaka stamina varje tick
+    //Den har gï¿½r sï¿½ att om man inte anvï¿½nder stamina kommer den vï¿½nta i 2 sekunder fï¿½r att sedan bï¿½rja sin regen med att ge tillbaka stamina varje tick
     private IEnumerator RegenStamina()
     {
         yield return new WaitForSeconds(2);

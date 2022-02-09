@@ -6,8 +6,7 @@ TagManager:
   tags:
   - Platform
   - Object
-  - CloudMoving
-  - CloudMoving2
+  - Key
   layers:
   - Default
   - TransparentFX
