@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SuperJump : MonoBehaviour
 {
+    #region Variabler
     private Rigidbody2D rb;
     [SerializeField]
     public float WingsForce = 30f;
@@ -19,7 +20,7 @@ public class SuperJump : MonoBehaviour
     [SerializeField]
     KeyCode up;
 
-    
+    #endregion
 
 
 
@@ -34,10 +35,11 @@ public class SuperJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          
 
-      
 
+
+        #region WingsInput
+        // Den h�r g�r �s att om man trycker W kommer den kolla im man har tillr�ckligt med stamina f�r att flyga, om det �r sant kommer den att start UseWings, om inte kommer man inte kunna anv�nda vingarna 
         if (Input.GetKey(up))
         {
             if (isUsing == false && StaminaBar.instance.currentStamina > 10)
@@ -59,9 +61,11 @@ public class SuperJump : MonoBehaviour
         {
             StopWings();
         }
-        
-        
+        #endregion
+
     }
+    #region StartWings
+    //Den h�r g�r s� att om man kunde anv�nda vingarna kommer den att flyga upp lite med hj�lp av stamina och den kommer anv�nda stamina till den inte har tillr�ckligt
     void StartWings()
     {
         if (rb.velocity.y < SpeedLimit)
@@ -69,16 +73,16 @@ public class SuperJump : MonoBehaviour
             rb.AddForce(Vector3.up * WingsForce);
         }
         
-       // WingsStrenght -= Time.deltaTime;
+   
         isUsing = true;
        StaminaBar.instance.UseStamina(25* Time.deltaTime);
     }
+    #endregion 
+
+    //Om man inte har tillr�ckligt med Stamina kommer den att bara simpelt att inte funka
     void StopWings()
     {
-     /*   if (StaminaBar.instance.currentStamina < WingsStrenghtLimit)
-        {
-            StaminaBar.instance.currentStamina += Time.deltaTime;
-        }*/
+   
         
         isUsing = false;;
     }

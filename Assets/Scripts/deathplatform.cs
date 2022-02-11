@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Skriven av Elliot
 public class deathplatform : MonoBehaviour
 {
     [SerializeField]

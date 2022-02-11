@@ -118,6 +118,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.tag == "Key") //om man kolliderar med nyckeln (trigger) s� blir "hasKey" true
         {
             hasKey = true;
+            print("Got key!");
         }
         #endregion
     }
