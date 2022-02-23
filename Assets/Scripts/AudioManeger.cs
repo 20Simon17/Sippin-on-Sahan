@@ -7,11 +7,22 @@ public class AudioManeger : MonoBehaviour
 {
 
     public Sound[] sound; // ansluter till scripted Sound
+    public static AudioManeger instance;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+
+        DontDestroyOnLoad(gameObject);
+
         foreach (Sound s in sound) 
         {
 
@@ -22,6 +33,16 @@ public class AudioManeger : MonoBehaviour
             s.source.pitch = s.pitch;
         }
 
+    }
+
+    private void Start()
+    {
+        Sound s = Array.Find(sound, sound => sound.name == "Theme");
+        if (s.source.isPlaying == false)
+        {
+            Play("Theme");
+        }
+        
     }
 
     public void Play(string name)
