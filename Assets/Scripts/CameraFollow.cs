@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    public Vector3 offset;
+    public Vector3 offset;// kan välja kamera offset från 1 - 10 
     [Range(1, 10)]
     public float smoothFactor;
 
