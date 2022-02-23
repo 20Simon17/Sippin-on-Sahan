@@ -16220,11 +16220,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166481501}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c874368a93c5d8144a4e2997847fe353, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.526
   m_Pitch: 1
   Loop: 1
@@ -19018,6 +19018,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fbf553081df704749a2814bc086d0994, type: 3}
     volume: 1
     pitch: 3
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: c874368a93c5d8144a4e2997847fe353, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
 --- !u!4 &1760106634
 Transform:
