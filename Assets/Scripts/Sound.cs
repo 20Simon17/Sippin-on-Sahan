@@ -3,6 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
+    //skriven av Theo
 
     public string name;
 

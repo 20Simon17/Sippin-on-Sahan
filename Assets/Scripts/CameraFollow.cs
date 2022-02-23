@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    //används inte, men skriven av Theo
     public Transform target;
     public Vector3 offset;// kan välja kamera offset från 1 - 10 
     [Range(1, 10)]
