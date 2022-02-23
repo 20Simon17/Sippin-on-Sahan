@@ -37,10 +37,10 @@ public class AudioManeger : MonoBehaviour
 
     private void Start()
     {
-        Sound s = Array.Find(sound, sound => sound.name == "Theme");
+        Sound s = Array.Find(sound, sound => sound.name == "Theme");// hitatr theme i början 
         if (s.source.isPlaying == false)
         {
-            Play("Theme");
+            Play("Theme");// spelar theme om den int spelas 
         }
         
     }
